@@ -15,7 +15,7 @@ router.post("/", async (req: Request, res: Response) => {
             try{
                 const fileName = `${booking_id}.png`
                 const img_path = path.join(process.cwd(), 'public/qr_codes', fileName);
-                const data = `${process.env.SERVE}api/booking?booking_id=${booking_id}`
+                const data = `${process.env.SERVE}/booking?booking_id=${booking_id}`
 
                  // Check if the folder exists, if not, create it
                 if (!fs.existsSync(path.join(process.cwd(), 'public/qr_codes'))) {
