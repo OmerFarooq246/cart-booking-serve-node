@@ -18,9 +18,11 @@ router.get("/", async (req: Request, res: Response) => {
         
         if (bookings){
             console.log("bookings:", bookings)
+            await client?.close()
             res.status(200).json({ success: true, data: bookings })
         }
         else
+            await client?.close()
             res.status(404).json({"error": "No booking found in the last 7 days"})
     }
     catch (error){

@@ -52,13 +52,14 @@ router.post("/", async (req: Request, res: Response) => {
             console.log("msg_entry: ", msg_entry)
             const result = Messages?.insertOne(msg_entry)
             console.log("db result: ", result)
+            await client?.close()
             res.status(200).json({ "message": "flow success" })
         }
         else{
+            await client?.close()
             console.log("req of sent")
             res.status(200).json({ "message": "res of sent req" })
         }
-        
     }
     catch (error){
         console.log("error in webook POST: ", error)

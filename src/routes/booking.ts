@@ -23,12 +23,15 @@ router.get("/", async (req: Request, res: Response) => {
                 const res_json = {
                     "message": "تم تغيير حالة الحجز إلى مستخدم.",
                 }
+                await client?.close()
                 res.status(200).json(res_json)
             }
             else
+                await client?.close()
                 res.status(409).json({"error": "Booking has an unknown status"})
         }
         else
+            await client?.close()
             res.status(404).json({"error": "No booking found for the requested id"})
     }
     catch (error){
