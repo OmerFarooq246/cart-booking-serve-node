@@ -50,7 +50,7 @@ router.post("/", async (req: Request, res: Response) => {
                 "timestamp": new Date()
             }
             console.log("msg_entry: ", msg_entry)
-            const result = Messages?.insertOne(msg_entry)
+            const result = await Messages?.insertOne(msg_entry)
             console.log("db result: ", result)
             await client?.close()
             res.status(200).json({ "message": "flow success" })
